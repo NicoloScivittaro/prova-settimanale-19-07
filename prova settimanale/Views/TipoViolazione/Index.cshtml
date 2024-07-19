@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.TipoViolazione>
+
+@{
+    ViewData["Title"] = "Tipi di Violazione";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Tipi di Violazione</h2>
+
+    <div class="d-flex justify-content-between mb-3">
+        <h3 class="text-muted">Elenco dei Tipi di Violazione</h3>
+        <a href="/TipoViolazione/Create" class="btn btn-primary">Aggiungi Nuovo Tipo di Violazione</a>
+    </div>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Descrizione</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Descrizione</td>
+                    <td>
+                        <a href="/TipoViolazione/Edit/@item.idViolazione" class="btn btn-sm btn-warning">Modifica</a>
+                        <a href="/TipoViolazione/Delete/@item.idViolazione" class="btn btn-sm btn-danger">Elimina</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

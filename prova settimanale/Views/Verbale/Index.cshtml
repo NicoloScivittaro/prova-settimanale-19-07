@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PoliziaMunicipaleApp.Models.Verbale>
+
+@{
+    ViewData["Title"] = "Verbale";
+}
+
+<h2>Verbale</h2>
+
+<p>
+    <a href="/Verbale/Create">Compila Nuovo Verbale</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data Violazione</th>
+            <th>Indirizzo Violazione</th>
+            <th>Agente</th>
+            <th>Data Trascrizione</th>
+            <th>Importo</th>
+            <th>Punti Decurtati</th>
+            <th>Trasgressore</th>
+            <th>Tipo Violazione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DataViolazione.ToString("yyyy-MM-dd")</td>
+                <td>@item.IndirizzoViolazione</td>
+                <td>@item.Nominativo_Agente</td>
+                <td>@item.DataTrascrizioneVerbale.ToString("yyyy-MM-dd")</td>
+                <td>@item.Importo</td>
+                <td>@item.DecurtamentoPunti</td>
+                <td>@item.Anagrafica.Cognome @item.Anagrafica.Nome</td>
+                <td>@item.TipoViolazione.Descrizione</td>
+            </tr>
+        }
+    </tbody>
+</table>

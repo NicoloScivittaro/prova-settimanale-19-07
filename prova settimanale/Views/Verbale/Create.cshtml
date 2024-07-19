@@ -1,0 +1,63 @@
+﻿@model PoliziaMunicipaleApp.Models.VerbaleViewModel
+
+@{
+    ViewData["Title"] = "Compila Verbale";
+}
+
+<h2>Compila Verbale</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Verbale.DataViolazione" class="control-label"></label>
+        <input asp-for="Verbale.DataViolazione" class="form-control" type="date" />
+        <span asp-validation-for="Verbale.DataViolazione" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Verbale.IndirizzoViolazione" class="control-label"></label>
+        <input asp-for="Verbale.IndirizzoViolazione" class="form-control" />
+        <span asp-validation-for="Verbale.IndirizzoViolazione" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Verbale.Nominativo_Agente" class="control-label"></label>
+        <input asp-for="Verbale.Nominativo_Agente" class="form-control" />
+        <span asp-validation-for="Verbale.Nominativo_Agente" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Verbale.DataTrascrizioneVerbale" class="control-label"></label>
+        <input asp-for="Verbale.DataTrascrizioneVerbale" class="form-control" type="date" />
+        <span asp-validation-for="Verbale.DataTrascrizioneVerbale" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Verbale.Importo" class="control-label"></label>
+        <input asp-for="Verbale.Importo" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Verbale.Importo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Verbale.DecurtamentoPunti" class="control-label"></label>
+        <input asp-for="Verbale.DecurtamentoPunti" class="form-control" type="number" />
+        <span asp-validation-for="Verbale.DecurtamentoPunti" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Verbale.idAnagrafica" class="control-label">Trasgressore</label>
+        <select asp-for="Verbale.idAnagrafica" class="form-control">
+            @foreach (var item in Model.Anagrafica)
+            {
+                <option value="@item.idAnagrafica">@item.Cognome @item.Nome</option>
+            }
+        </select>
+        <span asp-validation-for="Verbale.idAnagrafica" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Verbale.IdViolazione" class="control-label">Tipo Violazione</label>
+        <select asp-for="Verbale.IdViolazione" class="form-control">
+            @foreach (var item in Model.TipoViolazione)
+            {
+                <option value="@item.idViolazione">@item.Descrizione</option>
+            }
+        </select>
+        <span asp-validation-for="Verbale.IdViolazione" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Compila" class="btn btn-primary" />
+    </div>
+</form>
